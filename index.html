@@ -1,454 +1,786 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nelavai Usha | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelavai Usha Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth
+        }
+        
+        body {
+            /* High-end interactive mesh background */
+            background-color: #030712;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.25) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.25) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(124, 58, 237, 0.1) 0px, transparent 40%),
+                radial-gradient(at 100% 100%, rgba(220, 38, 38, 0.12) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(29, 78, 216, 0.2) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #fff;
+            padding-left: 320px;
+            overflow-x: hidden;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 270px;
+            padding: 25px;
+            border-radius: 25px;
+            background: rgba(17, 24, 39, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .profile {
+            text-align: center
+        }
+        
+        .profile h2 {
+            font-size: 22px;
+            margin-top: 10px;
+        }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        .profile p {
+            font-size: 14px;
+            color: #d1d5db;
+            margin-top: 4px;
+            margin-bottom: 15px;
+        }
 
-<style>
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #8b5cf6;
+            object-fit: cover
+        }
+        
+        .resume-btn {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 10px 0 15px 0;
+            background: linear-gradient(135deg, #8b5cf6, #2563eb);
+            color: #fff !important;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .resume-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.7);
+            background: linear-gradient(135deg, #a78bfa, #3b82f6);
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-scroll-behavior:smooth;
-}
+        .resume-btn i {
+            font-size: 16px;
+            animation: bounce 2s infinite;
+        }
 
-body{
-background:#0f172a;
-color:white;
-}
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-4px); }
+            60% { transform: translateY(-2px); }
+        }
 
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:#111827;
-position:sticky;
-top:0;
-z-index:1000;
-}
+        .sidebar ul {
+            list-style: none;
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 10px;
+        }
+        
+        .sidebar a {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px
+        }
+        
+        .sidebar ul a:hover {
+            background: rgba(139, 92, 246, .25)
+        }
+        
+        .social-links a {
+            display: inline-flex!important;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 5px;
+            transition: 0.3s ease;
+        }
 
-.logo{
-font-size:28px;
-font-weight:bold;
-color:#8b5cf6;
-}
+        .social-links a:hover {
+            background: #8b5cf6;
+            border-color: #8b5cf6;
+            transform: scale(1.1);
+        }
+        
+        section {
+            padding: 70px 8%
+        }
+        
+        .title {
+            text-align: center;
+            color: #a78bfa;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px
+        }
+        
+        .card {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 18px;
+            transition: .3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px
+        }
+        
+        .hero img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 5px solid #8b5cf6;
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: #111827;
+            color: #fff
+        }
+        
+        button {
+            background: #8b5cf6;
+            color: #fff;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 10px
+        }
+        
+        .contact a {
+            color: #fff;
+            text-decoration: none
+        }
+        
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .floating-icons i {
+            position: absolute;
+            font-size: 40px;
+            color: rgba(139, 92, 246, 0.1);
+            animation: floatIcons linear infinite;
+        }
+        
+        .floating-icons i:nth-child(1) { left: 5%; animation-duration: 18s; animation-delay: 0s; }
+        .floating-icons i:nth-child(2) { left: 15%; animation-duration: 22s; animation-delay: 2s; }
+        .floating-icons i:nth-child(3) { left: 28%; animation-duration: 20s; animation-delay: 4s; }
+        .floating-icons i:nth-child(4) { left: 40%; animation-duration: 25s; animation-delay: 1s; }
+        .floating-icons i:nth-child(5) { left: 55%; animation-duration: 18s; animation-delay: 3s; }
+        .floating-icons i:nth-child(6) { left: 68%; animation-duration: 23s; animation-delay: 5s; }
+        .floating-icons i:nth-child(7) { left: 80%; animation-duration: 19s; animation-delay: 2s; }
+        .floating-icons i:nth-child(8) { left: 90%; animation-duration: 24s; animation-delay: 4s; }
+        .floating-icons i:nth-child(9) { left: 50%; animation-duration: 21s; animation-delay: 6s; }
 
-nav ul{
-display:flex;
-list-style:none;
-gap:25px;
-}
+        @keyframes floatIcons {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+        }
 
-nav ul li a{
-text-decoration:none;
-color:white;
-font-weight:500;
-}
+        /* DYNAMIC CHIP STYLING */
+        .tech span {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            color: white;
+            font-size: 13px;
+            transition: .3s;
+            font-weight: 600;
+        }
+        
+        .tech span:hover {
+            transform: translateY(-3px);
+        }
+        
+        .tech span i {
+            margin-right: 5px;
+        }
 
-nav ul li a:hover{
-color:#8b5cf6;
-}
+        /* CUSTOM REUSABLE COLOURS FOR PROJECTS & INTERNSHIPS */
+        /* Java (Red-Orange) */
+        .tech .java-tag { background: linear-gradient(135deg, #e74c3c, #c0392b); box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3); }
+        .tech .java-tag:hover { box-shadow: 0 4px 15px rgba(231, 76, 60, 0.6); }
 
-.hero{
-min-height:100vh;
-display:flex;
-justify-content:space-around;
-align-items:center;
-padding:50px;
-}
+        /* Python (Blue) */
+        .tech .py-tag { background: linear-gradient(135deg, #3776ab, #1e4b70); box-shadow: 0 2px 8px rgba(55, 118, 171, 0.3); }
+        .tech .py-tag:hover { box-shadow: 0 4px 15px rgba(55, 118, 171, 0.6); }
 
-.hero-text{
-max-width:600px;
-}
+        /* AI/ML/CNN (Deep Cyan) */
+        .tech .ai-tag { background: linear-gradient(135deg, #00b4d8, #0077b6); box-shadow: 0 2px 8px rgba(0, 180, 216, 0.3); }
+        .tech .ai-tag:hover { box-shadow: 0 4px 15px rgba(0, 180, 216, 0.6); }
 
-.hero-text h1{
-font-size:55px;
-margin-bottom:10px;
-}
+        /* Hardware/Arduino/Microchip (Teal) */
+        .tech .hw-tag { background: linear-gradient(135deg, #00979d, #005c5f); box-shadow: 0 2px 8px rgba(0, 151, 157, 0.3); }
+        .tech .hw-tag:hover { box-shadow: 0 4px 15px rgba(0, 151, 157, 0.6); }
 
-.hero-text span{
-color:#8b5cf6;
-}
+        /* IoT/Wireless/CCTV (Orange) */
+        .tech .iot-tag { background: linear-gradient(135deg, #f59e0b, #b45309); box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3); }
+        .tech .iot-tag:hover { box-shadow: 0 4px 15px rgba(245, 158, 11, 0.6); }
 
-.hero-text h3{
-margin-bottom:20px;
-font-size:25px;
-}
+        /* Sensors/Alarms/Debugging (Crimson Red) */
+        .tech .sensor-tag { background: linear-gradient(135deg, #ef4444, #991b1b); box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3); }
+        .tech .sensor-tag:hover { box-shadow: 0 4px 15px rgba(239, 68, 68, 0.6); }
 
-.hero-text p{
-line-height:1.8;
-margin-bottom:25px;
-}
+        /* OOP/Logic/Database (Dark Indigo) */
+        .tech .db-tag { background: linear-gradient(135deg, #4f46e5, #312e81); box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3); }
+        .tech .db-tag:hover { box-shadow: 0 4px 15px rgba(79, 70, 229, 0.6); }
 
-.btn{
-display:inline-block;
-padding:12px 25px;
-background:#8b5cf6;
-color:white;
-text-decoration:none;
-border-radius:8px;
-margin-right:10px;
-}
+        /* HTML5 (Orange-Red) */
+        .tech .html-tag { background: linear-gradient(135deg, #e34f26, #b03514); box-shadow: 0 2px 8px rgba(227, 79, 38, 0.3); }
+        .tech .html-tag:hover { box-shadow: 0 4px 15px rgba(227, 79, 38, 0.6); }
 
-.hero-image img{
-width:320px;
-height:320px;
-border-radius:50%;
-border:5px solid #8b5cf6;
-object-fit:cover;
-box-shadow:0 0 25px #8b5cf6;
-}
+        /* CSS3 (Ocean Blue) */
+        .tech .css-tag { background: linear-gradient(135deg, #1572b6, #0f5182); box-shadow: 0 2px 8px rgba(21, 114, 182, 0.3); }
+        .tech .css-tag:hover { box-shadow: 0 4px 15px rgba(21, 114, 182, 0.6); }
 
-section{
-padding:80px 10%;
-}
+        /* JavaScript (Gold Yellow) */
+        .tech .js-tag { background: linear-gradient(135deg, #f1c40f, #f39c12); color: #000 !important; box-shadow: 0 2px 8px rgba(241, 196, 15, 0.3); }
+        .tech .js-tag:hover { box-shadow: 0 4px 15px rgba(241, 196, 15, 0.6); }
 
-.section-title{
-text-align:center;
-font-size:35px;
-margin-bottom:40px;
-color:#8b5cf6;
-}
+        /* React Native (Bright Cyan) */
+        .tech .react-tag { background: linear-gradient(135deg, #61dafb, #2188a1); color: #000 !important; box-shadow: 0 2px 8px rgba(97, 218, 251, 0.3); }
+        .tech .react-tag:hover { box-shadow: 0 4px 15px rgba(97, 218, 251, 0.6); }
 
-.about{
-background:#111827;
-border-radius:15px;
-padding:30px;
-line-height:1.8;
-}
+        /* Figma (Grape Pink/Purple) */
+        .tech .figma-tag { background: linear-gradient(135deg, #f24e1e, #a259ff); box-shadow: 0 2px 8px rgba(162, 89, 255, 0.3); }
+        .tech .figma-tag:hover { box-shadow: 0 4px 15px rgba(162, 89, 255, 0.6); }
 
-.skills{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-}
+        /* UI/UX Design / Mobile Dev (Deep Lavender) */
+        .tech .ui-tag { background: linear-gradient(135deg, #8b5cf6, #5b21b6); box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3); }
+        .tech .ui-tag:hover { box-shadow: 0 4px 15px rgba(139, 92, 246, 0.6); }
 
-.skill-card{
-background:#111827;
-padding:25px;
-border-radius:15px;
-text-align:center;
-transition:0.4s;
-}
+        /* Manufacturing & QA (Industrial Slate / Emerald Green) */
+        .tech .mfg-tag { background: linear-gradient(135deg, #64748b, #334155); box-shadow: 0 2px 8px rgba(100, 116, 137, 0.3); }
+        .tech .mfg-tag:hover { box-shadow: 0 4px 15px rgba(100, 116, 137, 0.6); }
+        .tech .qa-tag { background: linear-gradient(135deg, #10b981, #065f46); box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); }
+        .tech .qa-tag:hover { box-shadow: 0 4px 15px rgba(16, 185, 129, 0.6); }
 
-.skill-card:hover{
-transform:translateY(-8px);
-}
+        .card h4 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .card hr {
+            opacity: 0.2;
+        }
+        
+        #projects .grid, #internships .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        #projects .card, #internships .card {
+            background: rgba(17, 24, 39, 0.45);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(139, 92, 246, .15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-.skill-card i{
-font-size:45px;
-color:#8b5cf6;
-margin-bottom:15px;
-}
+        #projects .card:hover, #internships .card:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.4s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        
+        .stat-card i {
+            font-size: 42px;
+            color: #a78bfa;
+            margin-bottom: 15px;
+        }
+        
+        .stat-card h1 {
+            font-size: 40px;
+            color: white;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card p {
+            color: #d1d5db;
+            font-size: 16px;
+        }
 
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-}
+        .message-card {
+            background: rgba(17, 24, 39, 0.55);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: 0.4s;
+            margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        
+        .message-card h3 {
+            color: #a78bfa;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .message-card input, .message-card textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            outline: none;
+            border-radius: 12px;
+            background: #0b0f19;
+            color: white;
+            font-size: 15px;
+        }
+        
+        .message-card textarea {
+            resize: none;
+        }
+        
+        .message-card button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: #8b5cf6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .message-card button:hover {
+            background: #7c3aed;
+            box-shadow: 0 0 15px #8b5cf6;
+        }
 
-.project-card{
-background:#111827;
-padding:25px;
-border-radius:15px;
-transition:0.4s;
-}
+        .skill:nth-child(1) i { color: #f89820; }
+        .skill:nth-child(2) i { color: #3776ab; }
+        .skill:nth-child(3) i { color: #e34f26; }
+        .skill:nth-child(4) i { color: #1572b6; }
+        .skill:nth-child(5) i { color: #f7df1e; }
+        .skill:nth-child(6) i { color: #61dafb; }
+        .skill:nth-child(7) i { color: #ffffff; }
+        .skill:nth-child(8) i { color: #a259ff; }
+        
+        .skill i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            transition: .4s;
+        }
+        
+        .skill:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .project-card h3 i, .card h3 i {
+            color: #a78bfa;
+            margin-right: 8px;
+        }
 
-.project-card:hover{
-transform:translateY(-8px);
-}
-
-.project-card h3{
-color:#8b5cf6;
-margin-bottom:10px;
-}
-
-.education-box{
-background:#111827;
-padding:25px;
-border-radius:15px;
-line-height:2;
-}
-
-.contact{
-text-align:center;
-}
-
-.contact p{
-margin:10px 0;
-}
-
-.social{
-margin-top:20px;
-}
-
-.social a{
-font-size:35px;
-color:white;
-margin:0 15px;
-}
-
-.social a:hover{
-color:#8b5cf6;
-}
-
-footer{
-text-align:center;
-padding:20px;
-background:#111827;
-}
-
-@media(max-width:768px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-}
-
-.hero-image{
-margin-top:40px;
-}
-
-.hero-text h1{
-font-size:40px;
-}
-
-nav{
-flex-direction:column;
-gap:15px;
-}
-
-nav ul{
-flex-wrap:wrap;
-justify-content:center;
-}
-
-}
-
-</style>
+        @media(max-width:992px) {
+            body { padding-left: 0; }
+            .sidebar { position: relative; top: auto; left: auto; transform: none; width: 95%; margin: 15px auto; }
+            .hero { flex-direction: column; text-align: center; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .resume-btn { max-width: 300px; margin: 15px auto; }
+        }
+        
+        @media(max-width:600px) {
+            .stats-container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
-<nav>
-<div class="logo">NU</div>
-
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-
-<section class="hero" id="home">
-
-<div class="hero-text">
-
-<h1>Hi, I'm <span>Nelavai Usha</span></h1>
-
-<h3>Full Stack Developer </h3>
-
-<p>
-I am an Electronics & Communication Engineering student passionate
-about software development and emerging technologies.
-
-I have hands-on experience in Java, Python, SQL, HTML, CSS,
-JavaScript, React Native and IoT applications.
-
-I enjoy building practical solutions and continuously improving my
-technical skills through projects and real-world applications.
-</p>
-
-<a href="#contact" class="btn">Contact Me</a>
-
-<a href="resume.pdf" class="btn">Download Resume</a>
-
+<div class="floating-icons">
+    <i class="fab fa-java"></i>
+    <i class="fab fa-python"></i>
+    <i class="fab fa-html5"></i>
+    <i class="fab fa-css3-alt"></i>
+    <i class="fab fa-js"></i>
+    <i class="fab fa-react"></i>
+    <i class="fab fa-github"></i>
+    <i class="fab fa-figma"></i>
+    <i class="fas fa-database"></i>
 </div>
 
-<div class="hero-image">
-<img src="photo.jpg" alt="Profile">
+<div class="sidebar">
+    <div class="profile">
+        <img src="photo.jpg" alt="photo">
+        <h2>Nelavai Usha</h2>
+        <p>Java Full Stack Developer</p>
+        
+        <a href="resume.pdf" download class="resume-btn">
+            <i class="fas fa-file-arrow-down"></i> Download Resume
+        </a>
+        
+        <div class="social-links">
+            <a href="tel:+919642737968"><i class="fas fa-phone"></i></a>
+            <a href="mailto:nelavaiusha060@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/nelavaiusha060-419" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/usha-nelavai-b71904348" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+    <ul>
+        <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+        <li><a href="#projects"><i class="fas fa-laptop-code"></i> Projects</a></li>
+        <li><a href="#internships"><i class="fas fa-briefcase"></i> Internships</a></li>
+        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
 </div>
 
+<section class="hero">
+    <div>
+        <h1>Nelavai <span style="color:#a78bfa">Usha</span></h1>
+        <h2 id="typing"></h2>
+        <p style="color: #e5e7eb; max-width: 700px; line-height: 1.6; margin-top: 15px;">Motivated Electronics and Communication Engineering graduate with knowledge of Java, Python, SQL, HTML, CSS, JavaScript, React Native, Figma, IoT, and AI/ML concepts. Passionate about software development and problem-solving with hands-on experience in web and mobile application development. Seeking an opportunity to contribute technical skills and grow as a Software Developer.</p>
+    </div>
+    <img src="photo.jpg" alt="photo">
 </section>
 
-<section id="about">
-
-<h2 class="section-title">About Me</h2>
-
-<div class="about">
-  Hello! I'm Nelavai Usha, an Electronics and Communication Engineering student passionate about creating innovative software solutions. I specialize in Java, Python, Web Development, and React Native application development. My journey in technology has enabled me to work on projects ranging from AI/ML-based healthcare solutions and IoT systems to mobile and web applications. I am a quick learner, a problem solver, and someone who enjoys exploring new technologies. I am currently seeking opportunities where I can apply my skills, gain industry experience, and contribute to impactful projects.
-
-
-
-</div>
-
+<section id="stats">
+    <h2 class="title">My Journey</h2>
+    <div class="stats-container">
+        <div class="stat-card">
+            <i class="fas fa-laptop-code"></i>
+            <h1>5+</h1>
+            <p>Projects Completed</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-briefcase"></i>
+            <h1>3</h1>
+            <p>Internships</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-award"></i>
+            <h1>3+</h1>
+            <p>Certifications</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-code"></i>
+            <h1>10+</h1>
+            <p>Technologies</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h1>3</h1>
+            <p>Qualifications</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-trophy"></i>
+            <h1>3</h1>
+            <p>NCC Certificates</p>
+        </div>
+    </div>
 </section>
 
 <section id="skills">
-
-<h2 class="section-title">Skills</h2>
-
-<div class="skills">
-
-<div class="skill-card">
-<i class="fab fa-java"></i>
-<h3>Java</h3>
-</div>
-
-<div class="skill-card">
-<i class="fab fa-python"></i>
-<h3>Python</h3>
-</div>
-
-<div class="skill-card">
-<i class="fab fa-html5"></i>
-<h3>HTML5</h3>
-</div>
-
-<div class="skill-card">
-<i class="fab fa-css3-alt"></i>
-<h3>CSS3</h3>
-</div>
-
-<div class="skill-card">
-<i class="fab fa-js"></i>
-<h3>JavaScript</h3>
-</div>
-
-<div class="skill-card">
-<i class="fas fa-database"></i>
-<h3>MySQL</h3>
-</div>
-
-<div class="skill-card">
-<i class="fab fa-react"></i>
-<h3>React Native</h3>
-</div>
-
-<div class="skill-card">
-<i class="fab fa-github"></i>
-<h3>GitHub</h3>
-</div>
-
-</div>
-
+    <h2 class="title">Skills</h2>
+    <div class="grid">
+        <div class="card skill"><i class="fab fa-java"></i><h3>Java</h3></div>
+        <div class="card skill"><i class="fab fa-python"></i><h3>Python</h3></div>
+        <div class="card skill"><i class="fab fa-html5"></i><h3>HTML</h3></div>
+        <div class="card skill"><i class="fab fa-css3-alt"></i><h3>CSS</h3></div>
+        <div class="card skill"><i class="fab fa-js"></i><h3>JavaScript</h3></div>
+        <div class="card skill"><i class="fab fa-react"></i><h3>React Native</h3></div>
+        <div class="card skill"><i class="fab fa-github"></i><h3>GitHub</h3></div>
+        <div class="card skill"><i class="fab fa-figma"></i><h3>Figma</h3></div>
+    </div>
 </section>
 
 <section id="projects">
+    <h2 class="title">Projects</h2>
+    <div class="grid">
+        <!-- Liver Cancer -->
+        <div class="card">
+            <h3><i class='fas fa-notes-medical'></i> Liver Cancer Detection Using CNN</h3>
+            <p style="color: #d1d5db; line-height: 1.5; margin: 10px 0 15px 0;">
+               <i class="fas fa-circle-nodes" style="color: #a78bfa;"></i> Integrated a deep learning model for automatic liver tumor detection from CT scan images.<br>
+               <i class="fas fa-layer-group" style="color: #a78bfa;"></i> Applied CNN techniques and image processing for accurate classification and visualization of cancerous regions.<br>
+               <i class="fas fa-stethoscope" style="color: #a78bfa;"></i> Enhanced diagnostic support through AI-based medical image analysis.</p>
+            <div class="tech">
+                <span class="py-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="ai-tag"><i class="fas fa-brain"></i> CNN</span>
+                <span class="ai-tag"><i class="fas fa-robot"></i> AI/ML</span>
+            </div>
+        </div>
 
-<h2 class="section-title">Projects</h2>
+        <!-- Gas Leakage -->
+        <div class="card">
+            <h3><i class='fas fa-gas-pump'></i> Gas Leakage Detection System</h3>
+            <p style="color: #d1d5db; line-height: 1.5; margin: 10px 0 15px 0;">
+               <i class="fas fa-clock" style="color: #a78bfa;"></i> Designed a real-time gas leakage detection system using Arduino Uno and MQ-4 gas sensor.<br>
+               <i class="fas fa-bell" style="color: #a78bfa;"></i> Integrated buzzer and LED alerts to provide immediate notifications when gas leakage was detected.<br>
+               <i class="fas fa-shield-halved" style="color: #a78bfa;"></i> Designed a cost-effective safety solution for home and industrial environments, ensuring reliable gas monitoring.</p>
+            <div class="tech">
+                <span class="hw-tag"><i class="fas fa-microchip"></i> Arduino</span>
+                <span class="iot-tag"><i class="fas fa-wifi"></i> IoT</span>
+                <span class="sensor-tag"><i class="fas fa-broadcast-tower"></i> MQ-4</span>
+            </div>
+        </div>
 
-<div class="projects">
+        <!-- Bank -->
+        <div class="card">
+            <h3><i class='fas fa-university'></i> Bank Management System</h3>
+            <p style="color: #d1d5db; line-height: 1.5; margin: 10px 0 15px 0;">
+               <i class="fas fa-terminal" style="color: #a78bfa;"></i> Developed a Bank Management System using Python, OOP concepts, and file handling.<br>
+               <i class="fas fa-user-check" style="color: #a78bfa;"></i> Implemented account creation, deposits, withdrawals, and balance checking.<br>
+               <i class="fas fa-file-shield" style="color: #a78bfa;"></i> Used file handling for secure data storage.</p>
+            <div class="tech">
+                <span class="py-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="java-tag"><i class="fas fa-code"></i> OOP</span>
+            </div>
+        </div>
 
-<div class="project-card">
-<h3>Liver Cancer Detection Using CNN</h3>
-<p>
-Developed a deep learning model for automatic liver tumor
-segmentation from CT scans using Hybridized Fully
-Convolutional Neural Networks.
-</p>
-</div>
+        <!-- Restaurant -->
+        <div class="card">
+            <h3><i class='fas fa-utensils'></i> Restaurant Menu Website</h3>
+            <p style="color: #d1d5db; line-height: 1.5; margin: 10px 0 15px 0;">
+               <i class="fas fa-display" style="color: #a78bfa;"></i> Developed a responsive restaurant website using HTML, CSS, and JavaScript.<br>
+               <i class="fas fa-compass" style="color: #a78bfa;"></i> Created responsive layouts and user-friendly navigation.<br>
+               <i class="fas fa-vial-circle-check" style="color: #a78bfa;"></i> Tested website presentation and menu accessibility.</p>
+            <div class="tech">
+                <span class="html-tag"><i class="fab fa-html5"></i> HTML</span>
+                <span class="css-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                <span class="js-tag"><i class="fab fa-js"></i> JavaScript</span>
+            </div>
+        </div>
 
-<div class="project-card">
-<h3>Gas Leakage Detector</h3>
-<p>
-Built a real-time gas leakage monitoring system using
-Arduino Uno and MQ-4 sensor with buzzer and LED alerts.
-</p>
-</div>
+        <!-- Bodha IAS Mobile Application -->
+        <div class="card">
+            <h3><i class='fas fa-mobile-alt'></i> Bodha IAS Mobile Application</h3>
+            <p style="color: #d1d5db; line-height: 1.5; margin: 10px 0 15px 0;">
+               <i class="fas fa-right-to-bracket" style="color: #a78bfa;"></i> Developed Login, Menu, Logout, and Terms & Conditions screens using React Native.<br>
+               <i class="fas fa-wand-magic-sparkles" style="color: #a78bfa;"></i> Created responsive UI components based on Figma designs for an improved user experience.<br>
+               <i class="fas fa-bug-slash" style="color: #a78bfa;"></i> Participated in testing and debugging activities to ensure smooth application functionality.</p>
+            <div class="tech">
+                <span class="react-tag"><i class="fab fa-react"></i> React Native</span>
+                <span class="figma-tag"><i class="fab fa-figma"></i> Figma</span>
+                <span class="js-tag"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="ui-tag"><i class="fas fa-paint-brush"></i> UI/UX</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="project-card">
-<h3>Bodha IAS Mobile Application</h3>
-<p>
-Developed Login, Menu, Logout and Terms & Conditions pages
-using React Native with responsive UI design.
-</p>
-</div>
+<section id="internships">
+    <h2 class="title">Internships</h2>
+    <div class="grid">
+        <!-- Full Stack Java -->
+        <div class="card">
+            <h3><i class="fas fa-server"></i> Full Stack Java Developer Intern</h3>
+            <h4 style="color:#a78bfa; margin-top:10px;"><i class="fas fa-building"></i> Vstand4u Technologies</h4>
+            <p style="margin-top: 10px; color: #d1d5db; line-height: 1.5;"><i class="fas fa-cubes" style="color: #a78bfa;"></i> Developed and tested Java-based web application modules using Java, HTML, CSS, JavaScript, and MySQL. Built responsive web pages and integrated backend functionality based on project requirements. Implemented CRUD operations and performed database management using MySQL.</p>
+            <hr style="margin:15px 0; border-color:rgba(255,255,255,0.1);">
+            <p style="color: #e5e7eb; font-size: 14px;">📅 <strong>Duration:</strong> 2 Months</p>
+            <p style="color: #e5e7eb; font-size: 14px; margin: 3px 0;">👩‍💻 <strong>Role:</strong> Full Stack Java Developer Intern</p>
+            <p style="color: #e5e7eb; font-size: 14px;">🎯 <strong>Objective:</strong> Develop responsive web applications and gain hands-on experience in full-stack development.</p>
+            <div class="tech" style="margin-top: 15px;">
+                <span class="java-tag"><i class="fab fa-java"></i> Java</span>
+                <span class="html-tag"><i class="fab fa-html5"></i> HTML</span>
+                <span class="css-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                <span class="js-tag"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="db-tag"><i class="fas fa-database"></i> MySQL</span>
+            </div>
+        </div>
 
-<div class="project-card">
-<h3>Restaurant Menu Website</h3>
-<p>
-Created a static restaurant website using HTML and CSS
-with structured layouts and attractive UI.
-</p>
-</div>
+        <!-- React Native -->
+        <div class="card">
+            <h3><i class="fas fa-mobile-screen-button"></i> React Native Developer Intern</h3>
+            <h4 style="color:#a78bfa; margin-top:10px;"><i class="fas fa-building"></i> BodhaSoft Technologies</h4>
+            <p style="margin-top: 10px; color: #d1d5db; line-height: 1.5;"><i class="fas fa-shapes" style="color: #a78bfa;"></i> Developed key mobile application screens including Login, Menu, Logout, and Terms & Conditions using React Native. Created responsive UI components based on design requirements to enhance user experience and navigation. Participated in testing and debugging activities to ensure smooth application performance and functionality.</p>
+            <hr style="margin:15px 0; border-color:rgba(255,255,255,0.1);">
+            <p style="color: #e5e7eb; font-size: 14px;">📅 <strong>Duration:</strong> 2 Months</p>
+            <p style="color: #e5e7eb; font-size: 14px; margin: 3px 0;">👩‍💻 <strong>Role:</strong> React Native Developer Intern</p>
+            <p style="color: #e5e7eb; font-size: 14px;">🎯 <strong>Objective:</strong> Design and develop user-friendly mobile application interfaces for educational platforms.</p>
+            <div class="tech" style="margin-top: 15px;">
+                <span class="react-tag"><i class="fab fa-react"></i> React Native</span>
+                <span class="js-tag"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="figma-tag"><i class="fab fa-figma"></i> Figma</span>
+                <span class="ui-tag"><i class="fas fa-mobile-alt"></i> Mobile Dev</span>
+                <span class="sensor-tag"><i class="fas fa-bug"></i> Debugging</span>
+            </div>
+        </div>
 
-<div class="project-card">
-<h3>Bank Management System</h3>
-<p>
-Developed a Python-based application for account creation,
-deposits, withdrawals and balance checking using OOP.
-</p>
-</div>
-
-</div>
-
+        <!-- Embedded & Manufacturing (Dixon) -->
+        <div class="card">
+            <h3><i class="fas fa-video"></i> Embedded & Manufacturing Intern</h3>
+            <h4 style="color:#a78bfa; margin-top:10px;"><i class="fas fa-building"></i> AIL Dixon, Tirupati</h4>
+            <p style="margin-top: 10px; color: #d1d5db; line-height: 1.5;"><i class="fas fa-microchip" style="color: #a78bfa;"></i> Gained hands-on experience working inside a large-scale hardware manufacturing ecosystem. Participated in production tracking, quality assurance protocols, and assembly processes for security systems. Focused on the manufacturing unit operations of CPPLUS closed-circuit television (CCTV) cameras.</p>
+            <hr style="margin:15px 0; border-color:rgba(255,255,255,0.1);">
+            <p style="color: #e5e7eb; font-size: 14px;">📅 <strong>Duration:</strong> Diploma Internship Period</p>
+            <p style="color: #e5e7eb; font-size: 14px; margin: 3px 0;">👩‍💻 <strong>Role:</strong> Production & Assembly Intern</p>
+            <p style="color: #e5e7eb; font-size: 14px;">🎯 <strong>Objective:</strong> Understand industrial manufacturing pipelines, quality controls, and hardware assembly infrastructure.</p>
+            <div class="tech" style="margin-top: 15px;">
+                <span class="mfg-tag"><i class="fas fa-industry"></i> Manufacturing</span>
+                <span class="hw-tag"><i class="fas fa-camera"></i> CCTV Systems</span>
+                <span class="db-tag"><i class="fas fa-shield-halved"></i> CPPLUS</span>
+                <span class="qa-tag"><i class="fas fa-check-double"></i> QA Testing</span>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="education">
-
-<h2 class="section-title">Education</h2>
-
-<div class="education-box">
-
-<h3>B.Tech - Electronics & Communication Engineering</h3>
-<p>Chadalawada Ramanamma Engineering College</p>
-<p>CGPA: 7.69</p>
-
-<br>
-
-<h3>Diploma - Electronics & Communication Engineering</h3>
-<p>Government Polytechnic Chandragiri</p>
-<p>Percentage: 69.9%</p>
-
-<br>
-
-<h3> School - SSC</h3>
-<p>S.P.Z.P.G.H School</p>
-<p>Percentage: 98.9%</p>
-
-</div>
-
+    <h2 class="title">Education</h2>
+    <div class="grid">
+        <div class="card">
+            <h3><i class="fas fa-user-graduate"></i> B.Tech - ECE</h3>
+            <p style="color: #d1d5db; margin-top: 8px;"><i class="fas fa-school-flag" style="color: #a78bfa; margin-right: 5px;"></i> Chadalawada Ramanamma Engineering College<br>
+               📅 2023-2026<br>
+               📊 75%</p>
+        </div>
+        <div class="card">
+            <h3><i class="fas fa-scroll"></i> Diploma - ECE</h3>
+            <p style="color: #d1d5db; margin-top: 8px;"><i class="fas fa-school" style="color: #a78bfa; margin-right: 5px;"></i> Government Polytechnic College, Chandragiri<br>
+               📅 2020-2023<br>
+               📊 69.9%</p>
+        </div>
+        <div class="card">
+            <h3><i class="fas fa-award"></i> SSC</h3>
+            <p style="color: #d1d5db; margin-top: 8px;"><i class="fas fa-building-columns" style="color: #a78bfa; margin-right: 5px;"></i> SPZP Girls High School, Chandragiri<br>
+               📅 2015-2020<br>
+               📊 98%</p>
+        </div>
+    </div>
 </section>
 
 <section id="contact">
-
-<h2 class="section-title">Contact Me</h2>
-
-<div class="contact">
-
-<p><i class="fas fa-phone"></i> 9642737968</p>
-
-<p><i class="fas fa-envelope"></i> nelavaiusha060@gmail.com</p>
-
-<div class="social">
-
-<a href="https://github.com/nelavaiusha060-419" target="_blank">
-<i class="fab fa-github"></i>
-</a>
-
-<a href="https://www.linkedin.com/in/usha-nelavai-b71904348" target="_blank">
-<i class="fab fa-linkedin"></i>
-</a>
-
-</div>
-
-</div>
-
+    <h2 class="title">Contact Me</h2>
+    <div class="message-card">
+        <h3><i class="fas fa-paper-plane"></i> Send Message</h3>
+        <form action="https://formsubmit.co/nelavaiusha060@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="name" placeholder="👤 Your Name" required>
+            <input type="email" name="email" placeholder="📧 Your Email" required>
+            <textarea name="message" rows="6" placeholder="✍ ... Write Your Message" required></textarea>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+    </div>
 </section>
 
-<footer>
-<p>© 2026 Nelavai Usha | Portfolio</p>
-</footer>
-
+<script>
+const words = ["Java Full Stack Developer", "Software Developer"];
+let i = 0, j = 0;
+function t() {
+    let e = document.getElementById("typing");
+    if (i >= words.length) i = 0;
+    let w = words[i];
+    e.textContent = w.slice(0, ++j);
+    if (j === w.length) {
+        i++;
+        j = 0;
+        setTimeout(t, 1200);
+    } else setTimeout(t, 100);
+}
+t();
+</script>
 </body>
 </html>
