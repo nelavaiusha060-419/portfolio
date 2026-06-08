@@ -35,9 +35,6 @@ Hi, I'm **Nelavai Usha**, a passionate Java Full Stack Developer and Computer Sc
 - Educational platform designed for IAS aspirants.
 - Offers learning resources and user-friendly navigation.
 
-## 📸 Live Demo
-
-🔗 [View Portfolio](https://yourusername.github.io/portfolio/)
 
 
 ## ⭐ Support
